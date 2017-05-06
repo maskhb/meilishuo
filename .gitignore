@@ -1,0 +1,4 @@
+#过滤包管理目录
+/node_modules/
+/.project/
+/路径.txt/
