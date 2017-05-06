@@ -1,0 +1,5 @@
+#top_nav_container { position: absolute; top: 0; left: 0; width: 100%; background-color: #666; height: 30px; }
+
+#top_nav_container ul { float: right; }
+
+#top_nav_container li.drop { float: left; }
