@@ -4,6 +4,8 @@
   $bgc:#f8f8f8;
   $mainColor: #f36 !default;
   $color: #666 !default;
+  /*顶部导航*/
+  
   #top_nav_container {
       font-size: $fontSize;
       width: 100%;
@@ -32,22 +34,29 @@
           li.star {
               width: 110px;
               height: 30px;
-              ul.down {
-                  background-color: $bgc;
-                  width: 110px;
-                  display: none;
+              position: relative;
+              /*ul.down {
+                position: absolute;
+			    top: 30px;
+			    z-index: 999;
+			    background-color: #F8F8F8;
+			    padding: 8px 0;
+			    border: 1px solid #eee;
+			    line-height: 20px;
+			    width: 110px;
+			    display: none;
+			    margin-left: -4px;
                   a {
                       border-right: 0;
                       text-indent: 2em;
                   }
-              }
+              }*/
           }
-          li.star:hover ul.down{
-               
-                  display: block;
-                  z-index: 1000;
-              
-          }
+          /*li.star:hove {
+              display: block;
+              z-index: 10;
+              background-color: black;
+          }*/
           li:last-child a {
               border-right: 0;
           }
@@ -91,6 +100,7 @@
       }
       ;
   }
+  /*搜索栏*/
   
   #top_search_container {
       position: relative;
@@ -143,17 +153,50 @@
               width: 520px;
               height: 28px;
               padding-top: 12px;
-                  li {
-                      float: left;
-                      a {
-                          padding-right: 10px;
-                          font-size: 12px;
-                      }
-                      a.hot{color: #f36;}
+              li {
+                  float: left;
+                  a {
+                      padding-right: 10px;
+                      font-size: 12px;
                   }
+                  a.hot {
+                      color: #f36;
+                  }
+              }
           }
       }
       a.erwm {
           float: right;
+      }
+  }
+  /*下部TAB标签*/
+  
+  #top_nav2_container {
+      height: 40px;
+      line-height: 40px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #979797;
+      border-bottom: 1px solid rgba(151, 151, 151, .32);
+      background-color: #fff;
+      font-size: 0;
+      clear: both;
+      ul {
+          li {
+              float: left;
+              width: 100px;
+              text-align: left;
+              a {
+                  display: block;
+                  width: 34px;
+                  height: 38px;
+                  font-size: 16px;
+                  font-weight: 700;
+                  color: #333;
+              }
+              a.active {
+                  color: $mainColor;
+                  border-bottom: 2px solid $mainColor;
+              }
+          }
       }
   }

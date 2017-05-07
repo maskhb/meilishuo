@@ -1,6 +1,8 @@
+@charset "UTF-8";
+/*顶部导航*/
 #top_nav_container { font-size: 16px; width: 100%; background-color: #f8f8f8; height: 30px; }
 
-#top_nav_container ul { line-height: 30px; float: right; }
+#top_nav_container ul { line-height: 30px; float: right; /*li.star:hove { display: block; z-index: 10; background-color: black; }*/ }
 
 #top_nav_container ul li { float: left; }
 
@@ -8,13 +10,7 @@
 
 #top_nav_container ul li a:hover { color: #f36; }
 
-#top_nav_container ul li.star { width: 110px; height: 30px; }
-
-#top_nav_container ul li.star ul.down { background-color: #f8f8f8; width: 110px; display: none; }
-
-#top_nav_container ul li.star ul.down a { border-right: 0; text-indent: 2em; }
-
-#top_nav_container ul li.star:hover ul.down { display: block; z-index: 1000; }
+#top_nav_container ul li.star { width: 110px; height: 30px; position: relative; /*ul.down { position: absolute; top: 30px; z-index: 999; background-color: #F8F8F8; padding: 8px 0; border: 1px solid #eee; line-height: 20px; width: 110px; display: none; margin-left: -4px; a { border-right: 0; text-indent: 2em; } }*/ }
 
 #top_nav_container ul li:last-child a { border-right: 0; }
 
@@ -34,6 +30,7 @@
 
 #top_nav_container span.help { width: 6px; margin-left: 10px; background-position: -180px 0; }
 
+/*搜索栏*/
 #top_search_container { position: relative; }
 
 #top_search_container a.logo { background: url(../img/logo_header.png); float: left; width: 204px; height: 52px; background-size: 100%; margin-top: 40px; }
@@ -57,3 +54,12 @@
 #top_search_container .search #hotword li a.hot { color: #f36; }
 
 #top_search_container a.erwm { float: right; }
+
+/*下部TAB标签*/
+#top_nav2_container { height: 40px; line-height: 40px; margin-bottom: 10px; border-bottom: 1px solid #979797; border-bottom: 1px solid rgba(151, 151, 151, 0.32); background-color: #fff; font-size: 0; clear: both; }
+
+#top_nav2_container ul li { float: left; width: 100px; text-align: left; }
+
+#top_nav2_container ul li a { display: block; width: 34px; height: 38px; font-size: 16px; font-weight: 700; color: #333; }
+
+#top_nav2_container ul li a.active { color: #f36; border-bottom: 2px solid #f36; }

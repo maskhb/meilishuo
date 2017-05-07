@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/header.css">
     <!-- <script src="../js/require.js" data-main="../js/config.js"></script>  -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/header.js"></script>
+    <!-- 暂时还没模块化 -->
     <title>美丽说--潮流穿搭快人一步</title>
 </head>
 
@@ -37,10 +40,14 @@
                         <a href="#">
                             <span class="star"></span>我的收藏
                         </a>
-                        <ul class="down">
-                            <li><a href="#"> 收藏宝贝</a></li>
-                            <li><a href="#"> 收藏店铺</a></li>
-                        </ul>
+                        <!-- <ul class="down">
+                            <li>
+                            	<a href="#">收藏宝贝</a>
+                            </li>
+                            <li>
+                            	<a href="#">收藏店铺</a>
+                            </li>
+                        </ul> -->
                     </li>
                     <li class="myCar">
                         <a href="#">
@@ -69,11 +76,11 @@
                 <a href="#" class="logo"></a>
                 <div class="search">
                     <div class="search-tab">
-                    	<span class="active">宝贝</span><span>店铺</span> 
+                        <span class="active">宝贝</span><span>店铺</span>
                     </div>
-                    <div class="search-bar clearfix"><input type="text" class="search-text">
-                    <span class="search-btn"></span></div>
-                    
+                    <div class="search-bar clearfix">
+                        <input type="text" class="search-text">
+                        <span class="search-btn"></span></div>
                     <div id="hotword">
                         <ul class="clearfix">
                             <li>
@@ -91,13 +98,13 @@
                             <li>
                                 <a href="#">牛仔</a>
                             </li>
-                             <li>
+                            <li>
                                 <a href="#">T恤</a>
                             </li>
-                             <li>
+                            <li>
                                 <a href="#">套装</a>
                             </li>
-                             <li>
+                            <li>
                                 <a href="#">牛仔裤</a>
                             </li>
                             <li>
@@ -120,11 +127,49 @@
                 </a>
             </div>
         </div>
-
-
-
-
-        <!-- <div class="sec_nav" id="global-sec-nav"> <ul class="totalnum-12">  <li class="nav-item"><a href="http://www.meilishuo.com/" class="link active">首页</a></li>  <li class="nav-item"><a href="http://www.meilishuo.com/search/catalog/10057049?action=clothing&amp;mt=12.14354.r130395.18023&amp;acm=3.mce.2_10_182ya.14354.0.0Dm3kqiVOuryh.m_188509" class="link ">上衣</a></li>  <li class="nav-item"><a href="http://www.meilishuo.com/search/catalog/10057050?action=skirt&amp;mt=12.14354.r130396.18023&amp;acm=3.mce.2_10_182yc.14354.0.0Dm3kqiVOuryi.m_188510" class="link ">裙子</a></li>  <li class="nav-item"><a href="http://www.meilishuo.com/search/catalog/10057051?action=trousers&amp;mt=12.14354.r130397.18023&amp;acm=3.mce.2_10_182ye.14354.0.0Dm3kqiVOuryj.m_188511" class="link ">裤子</a></li>  <li class="nav-item"><a href="http://www.meilishuo.com/search/catalog/10057052?action=shoes&amp;mt=12.14354.r130505.18023&amp;acm=3.mce.2_10_182yg.14354.0.0Dm3kqiVOuryk.m_188512" class="link ">女鞋</a></li>  <li class="nav-item"><a href="http://www.meilishuo.com/search/catalog/10057053?action=bags&amp;mt=12.14354.r130506.18023&amp;acm=3.mce.2_10_182yi.14354.0.0Dm3kqiVOuryl.m_188513" class="link ">包包</a></li>  <li class="nav-item"><a href="http://www.meilishuo.com/search/catalog/10057054?action=accessories&amp;mt=12.14354.r130507.18023&amp;acm=3.mce.2_10_182yk.14354.0.0Dm3kqiVOurym.m_188514" class="link ">配饰</a></li>  <li class="nav-item"><a href="http://www.meilishuo.com/search/catalog/10057056?action=magic&amp;mt=12.14354.r130508.18023&amp;acm=3.mce.2_10_182ym.14354.0.0Dm3kqiVOuryn.m_188515" class="link ">美妆</a></li>  <li class="nav-item"><a href="http://www.meilishuo.com/search/catalog/10059310?action=neiyi&amp;mt=12.14354.r130509.18023&amp;acm=3.mce.2_10_182yo.14354.0.0Dm3kqiVOuryo.m_188516" class="link ">内衣</a></li>  <li class="nav-item"><a href="http://www.meilishuo.com/search/catalog/10057057?action=men&amp;mt=12.14354.r130510.18023&amp;acm=3.mce.2_10_182yq.14354.0.0Dm3kqiVOuryp.m_188517" class="link ">男友</a></li>  <li class="nav-item"><a href="http://www.meilishuo.com/search/catalog/10057058?action=children&amp;mt=12.14354.r130511.18023&amp;acm=3.mce.2_10_182ys.14354.0.0Dm3kqiVOuryq.m_188518" class="link ">童装</a></li>  <li class="nav-item"><a href="http://www.meilishuo.com/search/catalog/10057059?action=home&amp;mt=12.14354.r130512.18023&amp;acm=3.mce.2_10_182yu.14354.0.0Dm3kqiVOuryr.m_188519" class="link ">家居</a></li>  </ul></div> -->
+        <!-- 下部TAB标签切换 -->
+        <div id="top_nav2_container">
+            <div class="wrap">
+                <ul class="clearfix">
+                    <li>
+                        <a href="#" class="active">首页</a>
+                    </li>
+                    <li>
+                        <a href="#">上衣</a>
+                    </li>
+                    <li>
+                        <a href="#">裤子</a>
+                    </li>
+                    <li>
+                        <a href="#">女鞋</a>
+                    </li>
+                    <li>
+                        <a href="#">首页</a>
+                    </li>
+                    <li>
+                        <a href="#">包包</a>
+                    </li>
+                    <li>
+                        <a href="#">配饰</a>
+                    </li>
+                    <li>
+                        <a href="#">美妆</a>
+                    </li>
+                    <li>
+                        <a href="#">内衣</a>
+                    </li>
+                    <li>
+                        <a href="#">男友</a>
+                    </li>
+                    <li>
+                        <a href="#">童装</a>
+                    </li>
+                    <li>
+                        <a href="#">家居</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </header>
 </body>
 
