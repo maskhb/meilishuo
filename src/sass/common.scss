@@ -3,7 +3,7 @@
 // 引入外部sass文件 @import 'filename';
 
 $fontSize:14px;
-
+$mainColor:#f36 !default;
 ::before,
 ::after{
   /* 清除默认的间距和边距*/

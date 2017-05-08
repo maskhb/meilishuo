@@ -35,28 +35,7 @@
               width: 110px;
               height: 30px;
               position: relative;
-              /*ul.down {
-                position: absolute;
-          top: 30px;
-          z-index: 999;
-          background-color: #F8F8F8;
-          padding: 8px 0;
-          border: 1px solid #eee;
-          line-height: 20px;
-          width: 110px;
-          display: none;
-          margin-left: -4px;
-                  a {
-                      border-right: 0;
-                      text-indent: 2em;
-                  }
-              }*/
           }
-          /*li.star:hove {
-              display: block;
-              z-index: 10;
-              background-color: black;
-          }*/
           li:last-child a {
               border-right: 0;
           }
@@ -262,6 +241,4 @@
       }
   }
   
-  body {
-      height: 5000px;
-  }
+ 
