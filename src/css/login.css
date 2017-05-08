@@ -129,29 +129,3 @@ footer .footer_right { float: right; }
 footer .footer_right li { float: left; margin-left: 50px; }
 
 footer .footer_record { border-top: 1px solid #ccc; padding-top: 20px; width: 100%; text-align: center; line-height: 20px; }
-
-#carouser_container { width: 100%; }
-
-#carouser_container img { width: 1200px; }
-
-.channels { margin-top: 20px; }
-
-.channels li { width: 300px; height: 170px; float: left; }
-
-.channels li a img { width: 100%; }
-
-#nav { margin-top: 20px; text-align: center; }
-
-#nav span { cursor: pointer; margin-right: 33px; font-size: 20px; height: 28px; line-height: 28px; color: #000; border-bottom: 3px solid transparent; }
-
-#nav span.active { color: #f36; border-bottom: 3px solid #f36; }
-
-#nav a.more { float: right; margin-top: 4px; font-size: 14px; color: #6f6f6f; margin-right: 0; }
-
-.main_tab1 ul { margin-top: 20px; }
-
-.main_tab1 ul li { float: left; width: 224px; margin: 0 20px 18px 0; }
-
-.main_tab1 ul li img { width: 100%; }
-
-.main_tab1 ul li.last { margin-right: 0; }
