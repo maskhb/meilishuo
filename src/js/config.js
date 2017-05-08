@@ -19,20 +19,20 @@ require.config({
 require(['jquery', 'list', 'details', 'home', 'register', 'login', 'car', 'index'], functoin() {
     var path = location.pathname;
     console.log(path);
-    if (path == '/fruitday/src/html/list.html') {
+    if (path == '../src/html/list.html') {
         //商品列表页面
         list.init();
-    } else if (path == '/fruitday/src/html/details.html') {
+    } else if (path == '../src/html/details.html') {
         details();
-    } else if (path == '/fruitday/src/html/home.html') {
+    } else if (path == '../src/html/home.html') {
         home();
-    } else if (path == '/fruitday/src/html/index.html') {
+    } else if (path == '../src/html/index.html') {
 
-    } else if (path == '/fruitday/src/html/register.html') {
+    } else if (path == '../src/html/register.html') {
         register();
-    } else if (path == '/fruitday/src/html/login.html') {
+    } else if (path == '../src/html/login.html') {
         login();
-    } else if (path == '/fruitday/src/html/car.html') {
+    } else if (path == '../src/html/car.html') {
         car();
     }
 })
