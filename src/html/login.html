@@ -27,8 +27,8 @@
                         <input type="password" id="password" placeholder="密码">
                     </p>
                     <p>
-                        <button id="submit"  class="submit">立即登录</button>
-                        <!-- <input type="submit" id="submit" value="立即登录" class="submit"> -->
+                        <!-- <button id="submit"  class="submit">立即登录</button> -->
+                        <input type="submit" id="submit" value="立即登录" class="submit">
                     </p>
                     <p class="clearfix">
                         <a href="#">忘记密码</a>
@@ -45,6 +45,7 @@
         $('#webHeader').load('header.html');
         $('#webFooter').load('footer.html');
         $('#submit').on('click', function(){
+            console.log(123);
             $.post('../php/login.php', {phone: $('#phone').val(), password: $('#password').val() }, function(response){
                 $('span').html(response);
             })
