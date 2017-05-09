@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script>
+    $(function() {
+        $('#webHeader').load('header.html');
+        $('#webFooter').load('footer.html');
+    });
+    </script>
+</head>
+
+<body>
+    <header id="webHeader"></header>
+    <div class="wrap">
+        <div id="login_container" class="clearfix">
+            <img src="../img/login_left.jpg" />
+            <div class="infor_container">
+                <p class="title clearfix">
+                    新用户注册 <a href="login.html" class="register">已有账号</a>
+                </p>
+                <form>
+                    <p>
+                        <input type="text" id="phone" placeholder="手机号/邮箱/用户名">
+                    </p>
+                    <p>
+                        <input type="password" id="password" placeholder="密码">
+                    </p>
+                    <p>
+                        <input type="submit" id="submit" value="立即注册" class="submit">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer id="webFooter"></footer>
+</body>
+
+</html>
