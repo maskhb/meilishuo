@@ -1,13 +1,18 @@
 $(() => {
-	//选项卡切换
-    $('.search-tab span').on('click', function() {
-        $('.search-tab span').attr('class', '');
-        $(this).attr('class', 'active');
-    });
-    $('.clearfix li a').on('click', function() {
-        $('.clearfix li a').attr('class', '');
-        $(this).attr('class', 'active');
-    })
+    setTimeout(function(){
+    //搜索栏切换选项卡
+    //延时执行代码/或者在回调函数中引用否则DOM节点还未加载
+        $('.search-tab span').on('click', function() {
+            $('.search-tab span').attr('class', '');
+            $(this).attr('class', 'active');
+        });
+        console.log( $('#top_nav2_container li')[0])
+        $('#top_nav2_container li a').on('click', function() {
+            $('#top_nav2_container li a').attr('class', '');
+            $(this).attr('class', 'active');
+        });
+    },1000)
+
     //滚动事件显示回到顶部
 	var $totop = $("#sidebar_container").find(".totop")
     $(window).on('scroll', function() {
