@@ -6,7 +6,6 @@ $(() => {
             $('.search-tab span').attr('class', '');
             $(this).attr('class', 'active');
         });
-        console.log( $('#top_nav2_container li')[0])
         $('#top_nav2_container li a').on('click', function() {
             $('#top_nav2_container li a').attr('class', '');
             $(this).attr('class', 'active');
