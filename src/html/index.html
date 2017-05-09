@@ -5,27 +5,36 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/Font-Awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
-    <!-- <script src="../js/require.js" data-main="../js/config.js"></script>  -->
+    <!--<script src="../js/require.js" data-main="../js/config.js"></script>-->
     <!-- 暂时还没模块化 -->
     <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/jquery.hbcarousel.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/index.js"></script>
-
     <script>
-        $(function(){
-            $('#webHeader').load('header.html');
-            $('#webFooter').load('footer.html');
-        });
+    $(function() {
+        $('#webHeader').load('header.html');
+        $('#webFooter').load('footer.html');
+
+
+        var $ul = $("#carouser_container ul").hbcarousel({
+            imgs:["../img/banner0.jpg","../img/banner1.jpg","../img/banner2.jpg"],
+                buttons:false,
+                // 设置间隔时间
+                duration:3000,
+                type:'vertial'
+        }).show();
+        
+    });
     </script>
     <title>美丽说--潮流穿搭快人一步</title>
 </head>
 
 <body>
-<header id="webHeader"></header>
-   
+    <header id="webHeader"></header>
     <!-- sidebar -->
     <div id="sidebar_container">
-        <ul>
+        <ul class="">
             <li>
                 <i class="fa fa-mobile-phone"></i>&nbsp; 下载
                 <span class="text_vertical">APP</span>
@@ -61,39 +70,45 @@
         </ul>
     </div>
     <!-- 轮播图 -->
-    <div id="carouser_container">
-        <div class="wrap">
-            <img src="../img/banner0.jpg">
+    <div class="wrap">
+        <div id="carouser_container">
+            <ul>
+               <!--  <li>
+                    <img src="../img/banner0.jpg">
+                </li>
+                <li>
+                    <img src="../img/banner1.jpg">
+                </li>
+                <li>
+                    <img src="../img/banner2.jpg">
+                </li> -->
+            </ul>
         </div>
     </div>
-
     <!-- channels X4-->
-<ul class="channels wrap clearfix">
-    <li>
-        <a href="#">
-            <img src="../img/jrxp.jpg">
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <img src="../img/rxdp.jpg">
-        </a>
-    </li>
-     <li>
-        <a href="#">
-            <img src="../img/mrtj.jpg">
-        </a>
-    </li>
-     <li>
-        <a href="#">
-            <img src="../img/hwzt.jpg">
-        </a>
-    </li>
-</ul>
-
-
-<!-- tab选项卡 -->
-    
+    <ul class="channels wrap clearfix">
+        <li>
+            <a href="#">
+                <img src="../img/jrxp.jpg">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="../img/rxdp.jpg">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="../img/mrtj.jpg">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="../img/hwzt.jpg">
+            </a>
+        </li>
+    </ul>
+    <!-- tab选项卡 -->
     <div id="main_container">
         <div id="nav" class="clearfix wrap">
             <span class="active">今日新品</span>
@@ -104,61 +119,67 @@
             <ul class="clearfix">
                 <li>
                     <a href="details.html"><img src="../img/goods/001.jpg">
-                    <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
-                    <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p></a>
+                        <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
+                        <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p>
+                    </a>
                 </li>
                 <li>
                     <a href="details.html"><img src="../img/goods/002.jpg">
-                    <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
-                    <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p></a>
+                        <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
+                        <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p>
+                    </a>
                 </li>
                 <li>
                     <a href="details.html"><img src="../img/goods/003.jpg">
-                    <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
-                    <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p></a>
+                        <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
+                        <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p>
+                    </a>
                 </li>
                 <li class="last">
                     <a href="details.html"><img src="../img/goods/004.jpg">
-                    <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
-                    <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p></a>
+                        <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
+                        <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p>
+                    </a>
                 </li>
                 <li>
                     <a href="details.html"><img src="../img/goods/005.jpg">
-                    <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
-                    <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p></a>
+                        <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
+                        <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p>
+                    </a>
                 </li>
                 <li>
                     <a href="details.html"><img src="../img/goods/006.jpg">
-                    <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
-                    <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p></a>
+                        <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
+                        <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p>
+                    </a>
                 </li>
                 <li>
                     <a href="details.html"><img src="../img/goods/007.jpg">
-                    <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
-                    <p>￥$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p</p>>
+                        <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
+                        <p>￥$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p</p>>
                 </li>
                 <li>
                     <a href="details.html"><img src="../img/goods/008.jpg">
-                    <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
-                    <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p></a>
+                        <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
+                        <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p>
+                    </a>
                 </li>
                 <li>
                     <a href="details.html"><img src="../img/goods/009.jpg">
-                    <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
-                    <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p></a>
+                        <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
+                        <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p>
+                    </a>
                 </li>
                 <li class="last">
                     <a href="details.html"><img src="../img/goods/010.jpg">
-                    <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
-                    <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p></a>
+                        <p>2017夏新款韩版高腰显瘦不规则开叉毛边流苏牛仔短裤裙裤</p>
+                        <p>$<span class="price">48.5</span>已售出<span class="count">1234</span>件</p>
+                    </a>
                 </li>
-
-
             </ul>
         </div>
     </div>
     <!-- footer -->
-
     <footer id="webFooter"></footer>
 </body>
 

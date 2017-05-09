@@ -11,6 +11,20 @@
     $(function() {
         $('#webHeader').load('header.html');
         $('#webFooter').load('footer.html');
+
+
+        $(':button').on('click', function(){
+                // $.get('index.php?name=' + $('[name=name]').val() + '&password=' + $('[name=password]').val(), function(response){
+                //  // console.log(response);
+                //  $('span').html(response);
+                // })
+                //
+                //$.post(url, data, callback)
+                $.post('index.php', {name: $('[name=name]').val(), password: $('[name=password]').val() }, function(response){
+                    $('span').html(response);
+                })
+            })
+
     });
     </script>
 </head>

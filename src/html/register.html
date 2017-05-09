@@ -9,8 +9,29 @@
     <script src="../js/header.js"></script>
     <script>
     $(function() {
+        // 加载头尾
         $('#webHeader').load('header.html');
         $('#webFooter').load('footer.html');
+
+        //处理数据
+        $(function(){
+            $('#submit').click(function(){
+                $.post('php/register.php',{
+                    email: $('#email').val(),
+                    password: $('#password').val(),
+                    phone: $('#phone').val()
+                }, function(response){
+                    var $obj = eval('(' + response + ')');
+                    if($obj.state){
+                        $.alert('注册成功！');
+                    } else {
+                        $.alert($obj.message);
+                    }
+                })              
+            })
+        })
+
+
     });
     </script>
 </head>
@@ -26,7 +47,10 @@
                 </p>
                 <form>
                     <p>
-                        <input type="text" id="phone" placeholder="手机号/邮箱/用户名">
+                        <input type="text" id="phone" placeholder="手机号">
+                    </p>
+                    <p>
+                        <input type="text" id="email" placeholder="邮箱">
                     </p>
                     <p>
                         <input type="password" id="password" placeholder="密码">
