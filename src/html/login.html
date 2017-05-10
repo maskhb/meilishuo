@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="../css/login.css">
     <script src="../assets/jquery.min.js"></script>
     <script src="../js/header.js"></script>
+    <script src="../js/login.js"></script>
     
 </head>
-
 <body>
     <header id="webHeader"></header>
     <div class="wrap">
@@ -21,37 +21,23 @@
                 </p>
                 <form>
                     <p>
-                        <input type="text" id="phone" placeholder="手机号/邮箱/用户名">
+                        <input type="text" id="phone" placeholder="手机号">
                     </p>
                     <p>
                         <input type="password" id="password" placeholder="密码">
                     </p>
                     <p>
-                        <!-- <button id="submit"  class="submit">立即登录</button> -->
                         <input type="submit" id="submit" value="立即登录" class="submit">
                     </p>
                     <p class="clearfix">
                         <a href="#">忘记密码</a>
                     </p>
                 </form>
+                <span id="output"></span>
             </div>
         </div>
     </div>
     <footer id="webFooter"></footer>
-
-
-    <script>
-    $(function() {
-        $('#webHeader').load('header.html');
-        $('#webFooter').load('footer.html');
-        $('#submit').on('click', function(){
-            console.log(123);
-            $.post('../php/login.php', {phone: $('#phone').val(), password: $('#password').val() }, function(response){
-                $('span').html(response);
-            })
-        })
-    });
-    </script>
 </body>
 
 </html>

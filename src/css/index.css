@@ -152,10 +152,10 @@ footer .footer_record { border-top: 1px solid #ccc; padding-top: 20px; width: 10
 
 #nav a.more { float: right; margin-top: 4px; font-size: 14px; color: #6f6f6f; margin-right: 0; }
 
-.main_tab1 ul { margin-top: 20px; }
+.main_tab1 ul { width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; /*background-color: #eee; */ margin-top: 20px; }
 
-.main_tab1 ul li { float: left; width: 224px; margin: 0 20px 18px 0; }
+.main_tab1 ul li { margin-top: 10px; width: 224px; }
 
 .main_tab1 ul li img { width: 100%; }
 
-.main_tab1 ul li.last { margin-right: 0; }
+.main_tab1 ul li:hover img { -webkit-transform: scale(1.01); -ms-transform: scale(1.01); transform: scale(1.01); }

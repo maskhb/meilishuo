@@ -12,7 +12,7 @@
 	$password = $_POST["password"];
 	$sql = "select * from userdata where phone= '$phone' and password= '$password'";
 	$result = query($sql);
-	//当前 email 不存在，执行插入操作
+	//当前 phone 不存在，执行插入操作
 	if(count($result) < 1){
 		echo "{state: false, message: '登录失败！！！'}";
 	} else {

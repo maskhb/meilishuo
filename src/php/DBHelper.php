@@ -35,12 +35,6 @@
                 $jsonData[] = $obj;
                 // print_r($obj->email);
             }   
-            //将对象转换成 json 格式的字符并打印出来
-            //JSON.stringify()            
-            // if(!$isCheck){
-                // echo json_encode($jsonData, JSON_UNESCAPED_UNICODE);
-            // }
-            // 释放结果集
             mysqli_free_result($result);
         } 
         //关闭连接
@@ -59,13 +53,5 @@
         mysqli_close($conn);
         return $result;
     }
-    //查询语句，只是呈现结果，不改变数据
-    // $sql = "SELECT * FROM gz1610;";//返回一个结果集，存放在内存当中，用完要释放
-    //逻辑语句，改变数据
-    //insert into, update, delete // 返回一个布尔值，true|false，不用释放
-    // $insert = "insert into dk(name) values('" . $_POST["name"] . "')";
-
-    // excute($insert);
-    // query($sql);
-
+ 
 ?>
