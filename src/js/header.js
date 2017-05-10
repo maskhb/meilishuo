@@ -17,7 +17,7 @@ $(() => {
     $(window).on('scroll', function() {
 		var scrollTop = $(window).scrollTop();
     	//显示回到顶部
-    	if (scrollTop > 600) {
+    	if (scrollTop > 300) {
                 $totop.fadeIn();
             } else {
                 $totop.fadeOut();

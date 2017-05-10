@@ -180,4 +180,24 @@ footer .footer_record { border-top: 1px solid #ccc; padding-top: 20px; width: 10
 
 #detail_content .left .zoom img { width: 350px; }
 
-#detail_content .right { float: right; }
+#detail_content .right { float: left; margin-left: 50px; }
+
+#detail_content .good_info { width: 500px; border: 2px solid #eee; }
+
+#detail_content .good_info h2 { text-align: center; border-bottom: 1px solid #eee; padding: 5px 0; }
+
+#detail_content .good_info p { padding-left: 2em; overflow: hidden; line-height: 40px; margin: 5px 0; }
+
+#detail_content .good_info p .price { color: red; font-size: 30px; font-weight: bold; }
+
+#detail_content .good_info p a { float: right; margin-right: 20px; }
+
+#detail_content .good_info p a:hover { color: blue; }
+
+#detail_content .good_info .addToCar { border-top: 2px dotted #eee; padding: 10px 0; }
+
+#detail_content .good_info .addToCar .btnAdd { cursor: pointer; margin-left: 40px; display: block; width: 142px; height: 46px; text-align: center; font-size: 18px; line-height: 46px; background-color: #C81623; color: #fff; }
+
+.main_detail_content { width: 100%; border-top: 2px dotted #eee; margin-top: 40px; padding-top: 20px; text-align: center; }
+
+.main_detail_content li img { margin-left: 100px; }

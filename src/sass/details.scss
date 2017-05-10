@@ -1,31 +1,86 @@
 @import 'index';
 #detail_content {
     position: relative;
-    .left{
-    	float: left;
-    	.small-list {
-    	margin-top: 10px;
-    	width: 350px;
-    	display: flex;
-        justify-content:space-around;
-        li {
-            width: 60px;
-        }
-        img {
-            cursor: pointer;
-            width: 60px;
-        }
-    }
-    .zoom {
-    	cursor: move;
-        width: 350px;
-        img {
+    .left {
+        float: left;
+        .small-list {
+            margin-top: 10px;
             width: 350px;
+            display: flex;
+            justify-content: space-around;
+            li {
+                width: 60px;
+            }
+            img {
+                cursor: pointer;
+                width: 60px;
+            }
+        }
+        .zoom {
+            cursor: move;
+            width: 350px;
+            img {
+                width: 350px;
+            }
         }
     }
+    .right {
+        float: left;
+        margin-left: 50px;
     }
-    .right{
-    	float: right;
+    .good_info {
+        width: 500px;
+        border: 2px solid #eee;
+        h2 {
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            padding: 5px 0;
+        }
+        p {
+        	padding-left: 2em;
+            overflow: hidden;
+            ;
+            line-height: 40px;
+            margin: 5px 0;
+            .price {
+                color: red;
+                font-size: 30px;
+                font-weight: bold;
+            }
+            a {
+                float: right;
+                margin-right: 20px;
+            }
+            a:hover {
+                color: blue;
+            }
+        }
+        .addToCar {
+            border-top: 2px dotted #eee;
+            padding: 10px 0;
+            .btnAdd {
+            	cursor: pointer;
+                margin-left: 40px;
+                display: block;
+                width: 142px;
+                height: 46px;
+                text-align: center;
+                font-size: 18px;
+                line-height: 46px;
+                background-color: #C81623;
+                color: #fff;
+            }
+        }
     }
-    
+}
+.main_detail_content{
+	width: 100%;
+	border-top: 2px dotted #eee;
+	margin-top: 40px;padding-top: 20px;
+	text-align:center;
+	li{
+		img{
+		margin-left: 100px;
+		}
+	}
 }
