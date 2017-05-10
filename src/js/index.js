@@ -6,9 +6,6 @@ $(function() {
         $(this).attr('class', 'active');
     });
 
-    //处理样式
-    console.log($("#main_container>.main_tab1>ul li")[0])
-
     var $ul = $("#carouser_container ul").hbcarousel({
         imgs: ["../img/banner0.jpg", "../img/banner1.jpg", "../img/banner2.jpg"],
         buttons: false,

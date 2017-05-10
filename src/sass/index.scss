@@ -68,9 +68,23 @@
         li {
 			margin-top: 10px;
 			width: 224px;
+			p{
+				text-align: center;
+				overflow: hidden;
+				margin-bottom: 10px;
+				.price{
+					float: left;
+					color: #f36;
+				}
+				.count{
+					float: right;
+						color: #f36;
+					}
+			}
             img {
                 width: 100%;
             }
+
         }
         li:hover img {
                 -webkit-transform: scale(1.01);

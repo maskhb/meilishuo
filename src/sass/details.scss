@@ -1,0 +1,31 @@
+@import 'index';
+#detail_content {
+    position: relative;
+    .left{
+    	float: left;
+    	.small-list {
+    	margin-top: 10px;
+    	width: 350px;
+    	display: flex;
+        justify-content:space-around;
+        li {
+            width: 60px;
+        }
+        img {
+            cursor: pointer;
+            width: 60px;
+        }
+    }
+    .zoom {
+    	cursor: move;
+        width: 350px;
+        img {
+            width: 350px;
+        }
+    }
+    }
+    .right{
+    	float: right;
+    }
+    
+}

@@ -165,3 +165,19 @@ footer .footer_record { border-top: 1px solid #ccc; padding-top: 20px; width: 10
 .main_tab1 ul li img { width: 100%; }
 
 .main_tab1 ul li:hover img { -webkit-transform: scale(1.01); -ms-transform: scale(1.01); transform: scale(1.01); }
+
+#detail_content { position: relative; }
+
+#detail_content .left { float: left; }
+
+#detail_content .left .small-list { margin-top: 10px; width: 350px; display: flex; justify-content: space-around; }
+
+#detail_content .left .small-list li { width: 60px; }
+
+#detail_content .left .small-list img { cursor: pointer; width: 60px; }
+
+#detail_content .left .zoom { cursor: move; width: 350px; }
+
+#detail_content .left .zoom img { width: 350px; }
+
+#detail_content .right { float: right; }
