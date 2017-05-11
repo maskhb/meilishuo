@@ -154,7 +154,7 @@ footer .footer_record { border-top: 1px solid #ccc; padding-top: 20px; width: 10
 
 .main_tab1 ul { width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; /*background-color: #eee; */ margin-top: 20px; }
 
-.main_tab1 ul li { margin-top: 10px; width: 224px; }
+.main_tab1 ul li { margin-top: 10px; width: 224px; height: 315px; overflow: hidden; }
 
 .main_tab1 ul li p { text-align: center; overflow: hidden; margin-bottom: 10px; }
 
@@ -164,7 +164,7 @@ footer .footer_record { border-top: 1px solid #ccc; padding-top: 20px; width: 10
 
 .main_tab1 ul li img { width: 100%; }
 
-.main_tab1 ul li:hover img { -webkit-transform: scale(1.01); -ms-transform: scale(1.01); transform: scale(1.01); }
+.main_tab1 ul li:hover img { transition: transform .5s; -webkit-transform: scale(1.02); -ms-transform: scale(1.02); transform: scale(1.02); }
 
 #detail_content { position: relative; }
 

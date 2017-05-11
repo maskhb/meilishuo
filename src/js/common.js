@@ -1,361 +1,289 @@
-/*
-	获取min到max的随机数
- */
-function randomNum(min, max) {
-    return parseInt(Math.random() * (max - min + 1)) + min;
-}
+//模块化
+define(function() {
+	return {
+		// 获取一个100-1000的随机整数数
+		randomNum: function(min, max) {
+			return parseInt(Math.random() * (max - min + 1)) + min;
+		},
+		randomColor: function() {
+			var r = randomNum(0, 255);
+			var g = randomNum(0, 255);
+			var b = randomNum(0, 255);
 
-/**
- * [获取随机颜色]
- * @return [返回16进制的颜色]
- */
-function randomColor() {
-    var str = '0123456789abcdef';
-    var res = '#';
-    for (var i = 0; i < 6; i++) {
-        var idx = parseInt(Math.random() * str.length);
-        res += str[idx];
-    }
+			return 'rgb(' + r + ',' + g + ',' + b + ')';
+		},
+		/**
+		 * [过滤文本节点，得到元素节点]
+		 */
+		getEle: function(nodes) {
+			var res = [];
+			for(var i = 0; i < nodes.length; i++) {
+				// 通过节点类型去判断
+				if(nodes[i].nodeType === 1) {
+					res.push(nodes[i]);
+				}
+			}
 
-    return res;
-}
+			return res;
+		},
+		prevEle: function(node) {
+			// 获取前一个节点（但可能是文本节点）
+			var prev = node;
 
-// 封装一个兼容所有浏览器的方法getStyle
-// 用于获取css样式
-function getStyle(ele, attr) {
-    // 支持getComputedStyle的浏览器
-    if (window.getComputedStyle) {
-        return getComputedStyle(ele)[attr];
-    }
-    // 支持currentStyle的浏览器
-    else if (ele.currentStyle) {
-        return ele.currentStyle[attr];
-    } else {
-        return ele.style[attr];
-    }
-}
-// var ele = document.getElementById('box')
-// getStyle(ele,'width');//'200px';
+			// 判断是否为第一个元素
+			do {
+				prev = prev.previousSibling;
+			} while (prev && prev.nodeType != 1 && prev != node.parentNode.firstChild);
 
-/**
- * [给元素添加事件，兼容IE8-]
- * @param ele    [元素节点]
- * @param type   [事件类型]
- * @param handle [事件处理函数]
- * @param capture [是否捕获]
- */
-function addEvent(ele, type, handle, capture) {
-    if (ele.addEventListener) {
-        ele.addEventListener(type, handle, capture);
-    } else if (ele.attachEvent) {
-        ele.attachEvent('on' + type, handle);
-    } else {
-        ele['on' + type] = handle;
-    }
-}
-// addEvent(ele,type,fn)
-// addEvent(pop,'click',function(){
-// })
+			return prev;
+		},
+		nextEle: function(node) {
+			var next = node.nextSibling;
 
+			while(nex.nodeType != 1) {
+				next = next.nextSibling;
+			}
 
-/*
-	cookie的增删改查
- */
+			return next;
+		},
+		getCss: function(ele, attr) {
+			// 高级浏览器写法
+				if(window.getComputedStyle) {
+				return getComputedStyle(ele)[attr];
+			}
 
-//function getCookie(name){
-//	var cookie = document.cookie.split('; ');
-//	var res;
-//
-//	for(var i=0;i<cookie.length;i++){
-//		var arr = cookie[i].split('=');
-//		if(arr[0] === name){
-//			res = arr[1];
-//			break;
-//		}
-//	}
-//
-//	return res;
-//}
-//getCookie('carlist');//=>[]
+			// IE8-
+			else if(ele.currentStyle) {
+				return ele.currentStyle[attr];
+			}
 
-function getCookie(name) {
-    var str = document.cookie;
-    var arr = str.split("; ");
-    for (var i = 0; i < arr.length; i++) {
-        var newArr = arr[i].split("=");
-        if (newArr[0] == name) {
-            return newArr[1];
-        }
-    }
+			// 如果两者都不支持，直接返回内联样式
+			else {
+				return ele.style[attr]
+			}
+		},
+		/**
+		 * [给元素添加事件的方法，兼容ie8-]
+		 * @param {[DOM]} ele    [需要绑定事件的元素]
+		 * @param {[String]} type   [事件类型]
+		 * @param {[Function]} handle [事件处理函数]
+		 * @param {[Boolean]} capture [是否捕获]
+		 */
+		addEvent: function(ele, type, handle, capture) {
+			// 标准浏览器
+			if(ele.addEventListener) {
+				ele.addEventListener(type, handle, capture);
+			}
 
-}
+			// IE8-
+			else if(ele.attachEvent) {
+				ele.attachEvent('on' + type, handle);
+			}
 
+			// 如果以上两种都不支持，则使用传统事件绑定方式
+			else {
+				ele['on' + type] = handle
+			}
+		},
+		/**
+		 * [设置cookie]
+		 * @param {[String]} name    [cookie名]
+		 * @param {[String]} val     [cookie值]
+		 * @param {[Date]} expires 	 [cookie有效期]
+		 * @param {[String]} path    [cookie保存路径]
+		 */
+		setCookie: function(name, val, expires, path) {
+			var str = name + '=' + val;
 
-/**
- * [设置cookie]
- * @param name    [cookie名]
- * @param val     [cookie值]
- * @param expires [有效期]
- * @param path    [cookie保存的路径]
- */
-//function setCookie(name,val,expires,path){
-//	var cookieStr = name + '=' + val;
-//
-//	if(expires){
-//		cookieStr += ';expires=' + expires;
-//	}
-//
-//	if(path){
-//		cookieStr += ';path=' + path;
-//	}
-//
-//	// 写入cookie
-//	document.cookie = cookieStr;//'name=laoxie'
-//}
-//setCookie('name','laoxie',expires,path)
-//setCookie('carlist',[{}])
+			if(expires) {
+				str += ';expires=' + expires;
+			}
 
-//设置cookie的函数
-function setCookie(name, value, expires, path) {
-    // console.log(111)
-    var str = "";
-    if (name != undefined && value != undefined) {
-        str += name + "=" + value + ";";
-        // console.log(str)
+			if(path) {
+				str += ';path=' + path;
+			}
 
-        if (expires) {
-            var date = new Date();
-            date.setDate(date.getDate() + expires);
-            str += "expires=" + date + ";";
-            // console.log(str)
-        }
-        if (path) {
-            str += ";path=" + path;
-        }
-        // console.log(str)
-        document.cookie = str;
-        // console.log(document.cookie);//设置和获取cookie都是用document.cookie
-    } else {
-        console.log("设置cookie一定要name 和value")
-    }
-}
+			document.cookie = str;
+		},
+		getCookie: function(name) {
+			// 得到所有的cookie
+			var cookies = document.cookie;
 
+			var res = '';
 
-function removeCookie(name) {
-    var now = new Date();
-    now.setDate(now.getDate() - 1);
-    // document.cookie = name + '=null;expires='+ now
-    setCookie(name, 'null', now);
-}
+			if(cookies.length) {
+				cookies = cookies.split('; ');
+				cookies.forEach(function(item) {
+					var arr = item.split('=');
+					if(arr[0] === name) {
+						res = arr[1];
+					}
+				})
+			}
 
+			return res;
+		},
+		removeCookie: function(name) {
+			var now = new Date();
+			now.setDate(now.getDate() - 7);
 
-/*
-	去除首尾空格
-	'   abc' ==>'abc'
-	'   abc123  ' =>'abc123'
-	'abc d  '=>'abc d'
- */
-function trim(str) {
-    str = str.replace(/^\s+/g, '').replace(/\s+$/g, '');
-    return str;
-}
-// trim('   abc')
+			// setCookie(name,null,now);
+			document.cookie = name + '=null;expires=' + now;
+		},
+		/**
+		 * [动画函数]
+		 * @param  {[Element]}   ele      [动画元素]
+		 * @param  {[String]}   attr     [动画css属性名]
+		 * @param  {[Number]}   target   [动画的目标值]
+		 * @param  {Function} callback 	 [回调函数：当前动画完成后再调用的函数]
+		 */
+		animate: function(ele, options, callback) {
+			// 记录属性个数
+			var timerLen = 0;
 
-/**
- * [动画函数]
- * @param  ele    [执行动画的元素节点]
- * @param  attr   [执行动画的属性]
- * @param  target [属性改变的目标值]
- */
-/*function animate(ele,attr,target){
-	ele[attr+'timer'] = setInterval(()=>{
-		var current = getStyle(ele,attr);//10px,30deg,15,0.3;
+			// 遍历options对象
+			// 为每个属性设置定时器
+			for(var attr in options) {
+				timerLen++;
+				createTimer(attr);
+			}
 
-		// 提取单位
-		var unit = current.match(/[a-z]+$/i);
-		unit = unit ? unit[0] : '';
+			function createTimer(attr) {
+				// 把timer跟DOM节点绑定
+				// 用属性区分不同的timer
+				var timerName = attr + 'timer';
+				clearInterval(ele[timerName]);
 
-		current = parseFloat(current);
+				// 获取目标值
+				var target = options[attr]; //0.5
 
-		// 计算速度
-		var speed = (target - current)/10;
+				ele[timerName] = setInterval(function() {
+					// 获取当前值
+					var current = getCss(ele, attr); //10px,5em,8rem,30deg,1
 
-		if(attr === 'opacity'){
-			speed = speed>0 ? 0.05 : -0.05;
-		}else{
-			speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);//0.1=>1,-0.1=>-1
+					// 提取单位
+					var unit = current.match(/[a-z]+$/i);
+
+					// unit为null时，单位为空字符串
+					unit = unit ? unit[0] : '';
+
+					// 去掉单位，以便计算
+					current = parseFloat(current);
+
+					// 根据当前值和目标值计算速度
+					var speed = (current - target) / 10;
+
+					if(attr === 'opacity') {
+						// 透明度速度
+						speed = speed > 0 ? 0.05 : -0.05;
+						// speed = Number(speed.toFixed(2));
+					} else {
+						speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					}
+
+					// 当到达目标值时，清除定时器
+					if(current == target) {
+						clearInterval(ele[timerName]);
+
+						current = target + speed;
+
+						// 每一个定时器完成timerLen减一
+						timerLen--;
+
+						// 执行回调函数
+						// 最后一个动画完成时才执行回调函数
+						if(typeof callback === 'function' && timerLen === 0) {
+							callback();
+						}
+					}
+
+					// 不断改变ele的attr属性
+					ele.style[attr] = current - speed + unit;
+				}, 30);
+			}
+
+		},
+		ajax: function(options) {
+			var defaults = {
+				type: 'get',
+				async: true
+			}
+
+			// 覆盖默认参数
+			// var opt = Object.assign({},defaults,options);
+			for(var attr in options) {
+				defaults[attr] = options[attr];
+			}
+
+			var opt = defaults;
+
+			var xhr = null;
+			try {
+				xhr = new XMLHttpRequest();
+			} catch(error) {
+				try {
+					xhr = new ActiveXObject("Msxml2.XMLHTTP");
+				} catch(err) {
+					try {
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					} catch(e) {
+						alert('你的浏览器太low了，赶紧换google浏览');
+					}
+				}
+			}
+
+			//处理参数
+			//?pageNo=1&qty=10
+			var params = '';
+			if(opt.data) {
+				for(var attr in opt.data) {
+					params += attr + '=' + opt.data[attr] + '&';
+				}
+
+				// 去重最后一个&
+				params = params.slice(0, -1);
+			}
+
+			if(opt.type === 'get') {
+				opt.url += '?' + params;
+				params = null;
+			}
+
+			// 处理数据
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 304)) {
+					//[{}],'yes'
+					var res;
+					try {
+						// 如果接口返回的数据不符合json字符串格式，则原样返回
+						res = JSON.parse(xhr.responseText);
+					} catch(error) {
+						res = xhr.responseText;
+					}
+
+					// if(typeof opt.success === 'function'){
+					// 	opt.success(res);
+					// }
+					typeof opt.success === 'function' && opt.success(res);
+				}
+			}
+
+			xhr.open(opt.type, opt.url, opt.async);
+
+			// 设置post请求的content-type请求头，以便后端获取post数据
+			if(opt.type === 'post') {
+				xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+			}
+
+			xhr.send(params);
+		},
+		type: function(data) {
+			// data.toString();
+			// Object.prototype.toString(data)
+			var res = Object.prototype.toString.call(data);
+			res = res.slice(8, -1).toLowerCase();
+
+			return res;
 		}
-
-
-		console.log(current,target,speed);
-
-		// 当current达到target值时，停止定时器
-		if(current == target){
-			clearInterval(ele[attr + 'timer']);
-			current = target - speed;
-		}
-
-		ele.style[attr] = current + speed + unit;
-	},50);
-}*/
-//animate(ele,'left',100)
-//aninmate(ele,{left:100,width:300,opacity:0.5})
-
-/**
- * [动画函数]
- * @param  ele    [执行动画的元素节点]
- * @param  opt   [执行动画的属性和目标值]
- * @param  callback [回调函数]
- */
-function animate(ele, opt, callback) {
-    // 设置一个属性timerLen，用于记录属性动画的数量
-    ele.timerLen = 0;
-
-    // 遍历对象，找出每一个属性和对应的目标值
-    for (let attr in opt) {
-        ele.timerLen++;
-
-        // 目标值
-        let target = opt[attr];
-        let timerName = attr + 'timer';
-
-        // 开启定时器前，先清除之前的定时器
-        clearInterval(ele[timerName]);
-        ele[timerName] = setInterval(() => {
-            // 获取当前值
-            var current = getStyle(ele, attr);
-
-            // 提取单位
-            var unit = current.match(/[a-z]+$/i); //['px']/null
-            unit = unit ? unit[0] : '';
-
-            current = parseFloat(current);
-
-            // 计算缓动速度
-            var speed = (target - current) / 8; //0.003
-
-            // 取整（整数/负数）
-            speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed); //0.1=>1,-0.1=>-1
-
-            // 如果是opacity
-            if (attr == 'opacity') {
-                speed = speed > 0 ? 0.05 : -0.05;
-            }
-
-            // 当达到目标值时，清除定时器
-            if (current == target) {
-                clearInterval(ele[timerName]);
-                current = target - speed;
-
-                // 清除后更新timerLen的数量
-                ele.timerLen--;
-
-                // 在所有动画完成后才执行callback()
-                // 判断是否是最后一个属性动画执行完毕
-                if (ele.timerLen === 0) {
-                    typeof callback === 'function' && callback();
-                }
-            }
-
-            // 修改DOM节点的属性
-            ele.style[attr] = current + speed + unit;
-
-        }, 50);
-    }
-
-}
-
-
-//封装兼容IE8-浏览器的ajax请求
-//如果支持jsonp请求
-function ajax(opt) {
-    // 默认值
-    var defaults = {
-        type: 'get',
-        async: true,
-        // data:{}
-    }
-
-    // 兼容浏览器写法
-    var req = null;
-    try {
-        req = new XMLHttpRequest();
-    } catch (err) {
-        // 如果不支持XMLHttpRequest，则执行这里的代码：
-        try {
-            req = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (err) {
-            try {
-                req = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (err) {
-                alert('救不了你了，赶紧换电脑');
-            }
-        }
-    }
-
-    // 覆盖默认参数
-    for (var attr in opt) {
-        defaults[attr] = opt[attr];
-    }
-    var df = defaults;
-
-    // 传递数据处理
-    var dataStr = ''; //'name=xxx&age=18'
-    if (df.data) {
-        for (var attr in df.data) {
-            dataStr += attr + '=' + df.data[attr] + '&';
-        }
-
-        // 去除最后一个&
-        dataStr = dataStr.slice(0, -1);
-
-        // 根据请求类型，生成不同的数据字符串
-        // get:df.url + ? + dataStr
-        // post:send(dataStr)
-        if (df.type === 'get') {
-            df.url += '?' + dataStr;
-            dataStr = null;
-        }
-    }
-
-    // 返回数据处理
-    req.onreadystatechange = function() {
-        if (req.readyState === 4 && (req.status === 200 || req.status === 304)) {
-            // 判断返回数据是否为json字符串格式
-            var res;
-            try {
-                if (JSON.parse) {
-                    res = JSON.parse(req.responseText);
-                } else {
-                    res = eval('(' + req.responseText + ')');
-                }
-            } catch (err) {
-                res = req.responseText;
-            }
-
-            typeof df.callback === 'function' && df.callback(res);
-        }
-    }
-
-    req.open(df.type, df.url, df.async);
-
-    // 让后台的post方法可以请求到
-    if (df.type === 'post') {
-        req.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
-    }
-    req.send(dataStr);
-}
-
-
-/**
- * [判断数据类型]
- * @data [需要判断的数据类型]
- * @return [返回表示类型的字符串]
- */
-function type(data) {
-    //data.toString();
-    var res = Object.prototype.toString.call(data);
-    res = res.slice(8, -1).toLowerCase();
-
-    return res;
-}
+	}
+})
