@@ -1,0 +1,35 @@
+@import 'common';
+@import 'header';
+@import 'footer';
+
+#main_container_car{
+	border: 2px solid #eee;
+	width: 90%;height: 500px;
+	margin: 0 auto;
+	body{background-color: #eee;}
+	.car_table{
+		width: 90%;
+		text-align: center;
+		margin: 20px auto 0;
+		thead{
+			tr{
+				font-size: 19px;
+				line-height: 30px;
+				th{
+					border-bottom: 1px solid #eee;
+				}
+				td{
+				border-bottom: 1px solid #efefef;
+				}
+			}
+		}
+	}
+
+	td span.num_del {
+		display: block;
+		height: 30px;
+		cursor: pointer;
+		line-height: 30px;width: 60px;background-color: #eee;
+		margin:auto;
+	}
+}
