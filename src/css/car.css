@@ -130,7 +130,7 @@ footer .footer_right li { float: left; margin-left: 50px; }
 
 footer .footer_record { border-top: 1px solid #ccc; padding-top: 20px; width: 100%; text-align: center; line-height: 20px; }
 
-#main_container_car { border: 2px solid #eee; width: 90%; height: 500px; margin: 0 auto; }
+#main_container_car { position: relative; border: 2px solid #eee; width: 90%; height: 500px; margin: 0 auto; }
 
 #main_container_car body { background-color: #eee; }
 
@@ -142,4 +142,10 @@ footer .footer_record { border-top: 1px solid #ccc; padding-top: 20px; width: 10
 
 #main_container_car .car_table thead tr td { border-bottom: 1px solid #efefef; }
 
+#main_container_car .car_table thead tr td img { width: 80px; }
+
+#main_container_car tr { border-bottom: 1px dotted #eee; padding: 10px 0; }
+
 #main_container_car td span.num_del { display: block; height: 30px; cursor: pointer; line-height: 30px; width: 60px; background-color: #eee; margin: auto; }
+
+#main_container_car p.total_price_car_table { height: 80px; line-height: 80px; text-align: right; color: red; font-size: 24px; position: absolute; bottom: 0; right: 40px; }

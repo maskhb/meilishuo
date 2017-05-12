@@ -21,7 +21,8 @@ $(function() {
         //目标值 x:30---839---1240 y 242---14--186
     $('.addToCar').on('click', '.btnAdd', function(e) {
         //克隆并且移动商品
-        $currentImg.clone(true).appendTo('body').css({
+        var $cloneImg = $currentImg.clone(true)
+        $cloneImg.appendTo('body').css({
             'position': 'absolute',
             "left": 30,
             "top": 242,
@@ -37,8 +38,7 @@ $(function() {
                 "width": 20
             },
             onEnd: function() {
-                alert('已添加购物车');
-                $(this).remove;
+                $cloneImg.remove();
             }
         })
 
@@ -50,6 +50,7 @@ $(function() {
         carlist = carlist ? JSON.parse(carlist) : [];
         console.log(carlist)
             //获取商品信息
+           
         currentGUID = $currentImg.attr('data-guid');
         // cookie中是否存在当前商品
         var hasGoods = false;
@@ -75,5 +76,5 @@ $(function() {
         // 写入cookie
         setCookie("carlist", JSON.stringify(carlist), 7, '/')
     });
-    console.log(getCookie('carlist'))
+    console.log(getCookie('carlist'));
 })

@@ -6,11 +6,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/car.css">
     <script src="../assets/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/car.js"></script>
-    <script src="../js/common.js"></script>
 </head>
-
 <body>
     <header id="webHeader"></header>
     <div id="main_container_car" class="wrap">
@@ -26,142 +25,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class>
-                        </p>
-                    </td>
-                    <td>
-                        <p>颜色：冰麻墨绿</p>
-                        <p>尺码：M/L</p>
-                    </td>
-                    <td>
-                        单价
-                        <p> 185.00 </p>
-                    </td>
-                    <td class="car_num">
-                        数量
-                        3
-                    </td>
-                    <td>
-                        小计
-                        <p>555.00</p>
-                    </td>
-                    <td>
-                        操作
-                        <span class="num_del">删除</span>
-                    </td>
-                </tr>
             </tbody>
         </table>
+        <p class="total_price_car_table">CNY : 0.00</p>
     </div>
     <footer id="webFooter"></footer>
-    <script>
-    $(function() {
-        $('#webHeader').load('header.html');
-        $('#webFooter').load('footer.html');
-
-        $("#main_container_car")
-        var carList = getCookie('car');
-        console.log(carList);
-        // // 遍历carlist，把内容写入#carList元素
-        (JSON.parse(carList)).forEach(function(goods) {
-            // 计算价格
-            var htmlStr = `<li >
-                        <div class="cartbox clearfix">
-                            <div class="cimg pull-left">
-                                <a href="#" >
-                                  <img src="${goods.img}" alt="">
-                                </a>
-                               
-                            </div>
-                            <div class="cname pull-left">
-                                <p><a href="" >${goods.goondname}</a></p>
-                            </div>
-                            <div class="kg pull-left">
-                                <p>${goods.text}</p>					</div>
-                            <div class="cprice pull-left">
-                                <p>${goods.price}</p>
-                            </div>
-                            <div class="number pull-left clearfix">
-                                <span class="redu num pull-left">-</span>
-                                <input class="sumTotal pull-left" type="tel" disabled="" name='qty' autocomplete='on' value="${goods.num}"  >
-                                <span class="add num pull-left">+</span>
-                            </div>
-                            <div class="csum pull-left">
-                                <p>${goods.price}</p>
-                            </div>
-                            <div class="del pull-left">
-                                <p >删除</p>
-                            </div>
-                        </div>
-                    </li>`
-
-            $('.commodity ul').append(htmlStr);
-        });
-
-        var cprice;
-        var cnum;
-        $(".cprice").each(function(index, item) {
-            cprice = ($(item).find('p').html().split("￥"))[1];
-            cnum = $(item).find("p").closest('li').find('.sumTotal').val();
-            $(item).closest('li').find(".csum p").html("￥" + (cnum - 0) * (cprice - 0))
-        })
-
-        //计算价格
-        function calu() {
-
-            //改变总数
-            var allNum = 0;
-            // console.log($(".sumTotal"))
-            $(".sumTotal").each(function(index, item) {
-                allNum += ($(item).val() - 0);
-            })
-            $(".msg span em").html(allNum)
-                //改变总价格
-            var allPrice = 0;
-            $('.csum p').each(function(index, item) {
-                var aprice = ($(item).html().split('￥'))[1];
-                console.log(aprice);
-                allPrice += (aprice - 0)
-            });
-            $('.msg .all').html(allPrice);
-        }
-        calu();
-        //减少数量
-        $('.redu').click(function(e) {
-            var price = (($(e.target).closest('li').find(".cprice p").html()).split("￥"))[1];
-            var num = $(e.target).closest('li').find('.sumTotal ').val();
-            if (num > 1) {
-                num--;
-                $(e.target).closest('li').find('.sumTotal ').val(num);
-                $($(e.target).closest('li').find(".csum p")).html('￥' + parseInt($(e.target).closest('li').find('.sumTotal ').val() * (price - 0)))
-            }
-        });
-
-        //增加数量
-        $('.add').click(function(e) {
-            var price = (($(e.target).closest('li').find(".cprice p").html()).split("￥"))[1];
-            var num = $(e.target).closest('li').find('.sumTotal ').val();
-            num++;
-
-            $(e.target).closest('li').find('.sumTotal ').val(num);
-
-            $($(e.target).closest('li').find(".csum p")).html('￥' + parseInt($(e.target).closest('li').find('.sumTotal ').val() * (price - 0)))
-                //计算总价
-            calu();
-        });
-
-        //删除
-        $(".del").click(function(event) {
-            $(event.target).closest('li').remove();
-        });
-
-
-
-
-
-    })
-    </script>
 </body>
-
 </html>
