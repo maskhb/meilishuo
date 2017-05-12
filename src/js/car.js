@@ -48,7 +48,6 @@ $(function() {
         ).forEach(function(item) {
             newPriceTotle += item.price * item.qty;
         });
-        console.log(newPriceTotle.toFixed(2))
         $('.total_price_car_table').html("CNY : " + newPriceTotle.toFixed(2));
     });
 })

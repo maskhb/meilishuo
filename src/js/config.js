@@ -13,11 +13,11 @@ require.config({
         'common': 'common',
         'car': 'car',
         'home': 'home',
-        'header':'header'
+        'header': 'header'
     },
 
 });
-require(['jquery', 'list', 'details', 'register', 'login', 'car','header', 'index'], functoin() {
+require(['jquery', 'list', 'details', 'register', 'login', 'car', 'header', 'index'], functoin() {
     var path = location.pathname;
     console.log(path);
     if (path == '../src/html/list.html') {

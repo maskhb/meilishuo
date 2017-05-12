@@ -2,24 +2,36 @@ $(function() {
     $('#webHeader').load('header.html');
     $('#webFooter').load('footer.html');
 
+
+    //进入页面获取cookie
+    var carlist = getCookie('carlist');
+    console.log(carlist);
+    carlist = carlist ? JSON.parse(carlist) : [];
+
     //放大镜
     $('.zoom').gdszoom({
         position: 'right',
     });
 
+    //点击更换放大镜信息
     $('.small-list').on('click', 'img', function() {
-            $('.zoom img').attr({
-                src: this.src,
-                'data-big': $(this).attr('data-big'),
-                'data-guid':$(this).attr('data-guid')
-            });
-        })
-        // 点击加入购物车
+        $('.zoom img').attr({
+            src: this.src,
+            'data-big': $(this).attr('data-big'),
+            'data-guid': $(this).attr('data-guid')
+        });
+    })
+
+
+
+    // 点击加入购物车
     var $currentImg = $('#detail_content>.left>.zoom img')
     var cloneImg = $currentImg[0].clone
         //点击飞入购物车
         //目标值 x:30---839---1240 y 242---14--186
     $('.addToCar').on('click', '.btnAdd', function(e) {
+
+
         //克隆并且移动商品
         var $cloneImg = $currentImg.clone(true)
         $cloneImg.appendTo('body').css({
@@ -43,14 +55,11 @@ $(function() {
         })
 
 
-
         //先获取原有的cookie
         var carlist = getCookie('carlist');
 
         carlist = carlist ? JSON.parse(carlist) : [];
-        console.log(carlist)
-            //获取商品信息
-           
+        
         currentGUID = $currentImg.attr('data-guid');
         // cookie中是否存在当前商品
         var hasGoods = false;
@@ -76,5 +85,4 @@ $(function() {
         // 写入cookie
         setCookie("carlist", JSON.stringify(carlist), 7, '/')
     });
-    console.log(getCookie('carlist'));
 })
