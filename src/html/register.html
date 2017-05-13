@@ -13,23 +13,50 @@
         $('#webHeader').load('header.html');
         $('#webFooter').load('footer.html');
 
+        function checkReg() {
+            if (!/^1[34578]\d{9}$/.test(phone)) {
+                alert('手机号不合法');
+                return false;
+            }
+            if (!/^[\w\-\.]+@[a-z\d\-]+(\.[a-z]+){1,2}$/.test(email)) {
+                alert('你输入的邮箱不合法');
+            }
+            return false;
+            if (!/^\S{1,20}$/.test(password)) {
+                alert('密码不合法,长度小于20,不能包含空格');
+                return false;
+            }
+        }
+
+
         //处理数据
         $('#submit').click(function(e) {
-            e.preventDefault();
-            $.post('../php/register.php', {
-                phone: $('#phone').val(),
-                email: $('#email').val(),
-                password: $('#password').val()
-            }, function(response) {
+            if ($('#phone').val().trim() != '' && $('#password').val().trim() != '') {
+                // checkReg();
 
-                console.log(response);
-                var $obj = eval('(' + response + ')');
-                if ($obj['state']) {
-                    alert('注册成功！');
-                } else {
-                    alert($obj['message']);
-                }
-            })
+                e.preventDefault();
+                $.post('../php/register.php', {
+                    phone: $('#phone').val(),
+                    email: $('#email').val(),
+                    password: $('#password').val()
+                }, function(response) {
+
+                    console.log(response);
+                    var $obj = eval('(' + response + ')');
+                    if ($obj['state']) {
+                        alert('注册成功！');
+                    } else {
+                        alert($obj['message']);
+                    }
+                })
+            } else {
+                alert('用户名和密码不能为空')
+            }
+
+
+
+
+
         })
 
 
@@ -55,6 +82,8 @@
                     </p>
                     <p>
                         <input type="password" id="password" placeholder="密码">
+                    </p>
+                    <p id="output">
                     </p>
                     <p>
                         <input type="submit" id="submit" value="立即注册" class="submit">
