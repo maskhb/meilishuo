@@ -59,7 +59,7 @@ $(function() {
         var carlist = getCookie('carlist');
 
         carlist = carlist ? JSON.parse(carlist) : [];
-        
+
         currentGUID = $currentImg.attr('data-guid');
         // cookie中是否存在当前商品
         var hasGoods = false;

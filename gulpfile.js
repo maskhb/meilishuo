@@ -1,26 +1,26 @@
 // 引入gulp模块
 // commonjs规范引用模块
 var gulp = require('gulp');
-var sass = require('gulp-sass'); 
+var sass = require('gulp-sass');
 
 
 //这里创建gulp任务
 //用来编译sass文件
-gulp.task('compileSass',function(){
-	//先查找sass文件所在的位置
-	gulp.src('src/sass/*.scss')
+gulp.task('compileSass', function() {
+    //先查找sass文件所在的位置
+    gulp.src('src/sass/*.scss')
 
-	// 通过pipe 方法导入到 gulp 的插件中实现编译sass
-	.pipe(sass({outputStyle:'compact'}).on('error', sass.logError))
+    // 通过pipe 方法导入到 gulp 的插件中实现编译sass
+    .pipe(sass({ outputStyle: 'compact' }).on('error', sass.logError))
 
-	// 把编译后的文件输出
-	.pipe(gulp.dest('src/css'));
+    // 把编译后的文件输出
+    .pipe(gulp.dest('src/css'));
 });
 
 // 监听文件修改，执行相应任务
-gulp.task('jtSass',function(){
-	// 监听sass文件，如果有修改，则编译
-	gulp.watch('src/sass/*.scss',['compileSass']);
+gulp.task('jtSass', function() {
+    // 监听sass文件，如果有修改，则编译
+    gulp.watch('src/sass/*.scss', ['compileSass']);
 });
 
 
@@ -54,20 +54,20 @@ gulp.task('jtSass',function(){
 
 // 同步任务
 var browserSync = require('browser-sync');
-gulp.task('server',function(){
-	browserSync({
-		// server: "./src",
+gulp.task('server', function() {
+    browserSync({
+        // server: "./src",
 
-		// 代理服务器
-		proxy:'http://localhost/project/',
+        // 代理服务器
+        proxy: 'http://localhost/project/',
 
-		// 自定义端口
-		port:999,
+        // 自定义端口
+        port: 8080,
 
-		// 监听文件修改，自动刷新浏览器
-		files:['./src/html/*.html','./src/css/*.css','./src/js/*.js']
-	});
+        // 监听文件修改，自动刷新浏览器
+        files: ['./src/html/*.html', './src/css/*.css', './src/js/*.js']
+    });
 
-	// 监听sass文件修改，执行编译sass文件
-	gulp.watch('src/sass/*.scss',['compileSass']);
+    // 监听sass文件修改，执行编译sass文件
+    gulp.watch('src/sass/*.scss', ['compileSass']);
 });
