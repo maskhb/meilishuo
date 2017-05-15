@@ -14,7 +14,10 @@ $(function() {
             //登录后变成不可输入
             $('#phone').val('').attr('disabled', 'disabled');
             $('#password').val('').attr('disabled', 'disabled');
-            window.location.href = 'index.html';
+            // window.location.href = 'index.html';
         })
+        
     })
+
+
 });

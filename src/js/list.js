@@ -39,16 +39,22 @@ $(function() {
         xhr.send();
 
         // 滚动预加载
+        var finished = true;
+
         window.onscroll = function() {
-            console.log(window.scrollY)
-            console.log(document.body.clientHeight - window.innerHeight)
-            if (window.scrollY >= document.body.clientHeight - window.innerHeight - 300) {
-                    console.log("请求一次")
-                setTimeout(function() {
-                    xhr.open('get', 'http://localhost/project/src/php/goodlist.php?pageNo=' + pagecount, true);
-                    xhr.send();
-                }, 1000)
+            if (finished && (window.scrollY >= document.body.clientHeight - window.innerHeight - 300)) {
+                finished = false;
+                loadData()
             };
+        }
+
+        function loadData() {
+            console.log("请求一次");
+            setTimeout(function() {
+                xhr.open('get', 'http://localhost/project/src/php/goodlist.php?pageNo=' + pagecount, true);
+                xhr.send();
+                finished = true;
+            }, 1000)
         }
     });
     $('#webFooter').load('footer.html');
